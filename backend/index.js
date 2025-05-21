@@ -1,11 +1,14 @@
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+app.use(cors());
+
 const listDao = require("./data/list");
 const taskDao = require("./data/task");
-
-app.use(express.json());
 
 app.get("/list", (req, res) => {
   res.json(listDao.list());
